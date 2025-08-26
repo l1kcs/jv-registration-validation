@@ -22,7 +22,7 @@ class RegistrationServiceImplTest {
     }
 
     @Test
-    void userInStorage_isOk() {
+    void register_userInStorage_isOk() {
         user = new User.UserBuilder().setId(312313L)
                 .setLogin("test222")
                 .setPassword("qwerty")
@@ -35,7 +35,7 @@ class RegistrationServiceImplTest {
     }
 
     @Test
-    void userLowerSixDigitsLogin_notOk() {
+    void register_userLowerSixDigitsLogin_notOk() {
         user = new User.UserBuilder().setId(312313L)
                 .setLogin("test")
                 .setPassword("qwerty")
@@ -47,7 +47,7 @@ class RegistrationServiceImplTest {
     }
 
     @Test
-    void userLowerSixDigitsPassword_notOk() {
+    void register_userLowerSixDigitsPassword_notOk() {
         user = new User.UserBuilder().setId(312313L)
                 .setLogin("test123")
                 .setPassword("123")
@@ -58,7 +58,7 @@ class RegistrationServiceImplTest {
     }
 
     @Test
-    void userLowerEighteenAge_notOk() {
+    void register_userLowerEighteenAge_notOk() {
         user = new User.UserBuilder().setId(312313L)
                 .setLogin("test123")
                 .setPassword("123123")
@@ -69,7 +69,7 @@ class RegistrationServiceImplTest {
     }
 
     @Test
-    void userNullIdExpression_notOk() {
+    void register_userNullIdExpression_notOk() {
         user = new User.UserBuilder().setLogin("test123")
                 .setPassword("123333")
                 .setAge(18)
@@ -79,7 +79,7 @@ class RegistrationServiceImplTest {
     }
 
     @Test
-    void userNullLoginExpression_notOk() {
+    void register_userNullLoginExpression_notOk() {
         user = new User.UserBuilder().setId(312313L)
                 .setPassword("123456")
                 .setAge(18)
@@ -89,7 +89,7 @@ class RegistrationServiceImplTest {
     }
 
     @Test
-    void userNullPasswordExpression_notOk() {
+    void register_userNullPasswordExpression_notOk() {
         user = new User.UserBuilder().setId(312313L)
                 .setLogin("test123")
                 .setAge(18)
@@ -99,7 +99,7 @@ class RegistrationServiceImplTest {
     }
 
     @Test
-    void userNullAgeExpression_notOk() {
+    void register_userNullAgeExpression_notOk() {
         user = new User.UserBuilder().setId(312313L)
                 .setLogin("test123")
                 .setPassword("123123")
@@ -109,7 +109,7 @@ class RegistrationServiceImplTest {
     }
 
     @Test
-    void userNegativeAge_notOk() {
+    void register_userNegativeAge_notOk() {
         user = new User.UserBuilder().setId(312313L)
                 .setLogin("test123")
                 .setPassword("123123")
