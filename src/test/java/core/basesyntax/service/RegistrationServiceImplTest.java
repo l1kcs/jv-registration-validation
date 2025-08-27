@@ -1,12 +1,14 @@
 package core.basesyntax.service;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 import core.basesyntax.dao.StorageDao;
 import core.basesyntax.dao.StorageDaoImpl;
 import core.basesyntax.model.User;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class RegistrationServiceImplTest {
     private User user;
@@ -80,7 +82,7 @@ class RegistrationServiceImplTest {
     @Test
     void register_userWithEdgePassword_isOk() {
         user = new User.UserBuilder().setId(312313L)
-                .setLogin("test123")
+                .setLogin("test1235")
                 .setPassword("123123")
                 .setAge(19)
                 .build();
@@ -153,12 +155,12 @@ class RegistrationServiceImplTest {
     @Test
     void register_userWithTheSameLogin_notOk() {
         user = new User.UserBuilder().setId(312313L)
-                .setLogin("test123")
+                .setLogin("test1234")
                 .setPassword("123123")
                 .setAge(19)
                 .build();
         User sameUser = new User.UserBuilder().setId(312L)
-                .setLogin("test123")
+                .setLogin("test1234")
                 .setPassword("123123123")
                 .setAge(19)
                 .build();
