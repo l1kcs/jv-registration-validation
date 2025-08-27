@@ -9,23 +9,26 @@ public class RegistrationServiceImpl implements RegistrationService {
 
     @Override
     public User register(User user) {
-        if (user.getId() == null) {
-            throw new IllegelDataException("Id cannot be null");
-        }
         if (user.getLogin() == null) {
-            throw new IllegelDataException("Login cannot be null");
+            throw new IllegalDataException("Login cannot be null");
         }
         if (user.getPassword() == null) {
-            throw new IllegelDataException("Password cannot be null");
+            throw new IllegalDataException("Password cannot be null");
         }
         if (user.getAge() == null) {
-            throw new IllegelDataException("Age cannot be null");
+            throw new IllegalDataException("Age cannot be null");
         }
-        if (user.getLogin().length() < 6 || user.getPassword().length() < 6) {
-            throw new IllegelDataException("Login & Password should be 6 digits and longer");
+        if (user.getLogin().length() < 6) {
+            throw new IllegalDataException("Login should be 6 digits and longer");
+        }
+        if (user.getPassword().length() < 6) {
+            throw new IllegalDataException("Password should be 6 digits and longer");
         }
         if (user.getAge() < 18) {
-            throw new IllegelDataException("User's age is at least 18 y.o.");
+            throw new IllegalDataException("User's age is at least 18 y.o.");
+        }
+        if (storageDao.get(user.getLogin()) != null) {
+            throw new IllegalDataException("User with this login already exists");
         }
         return storageDao.add(user);
     }
